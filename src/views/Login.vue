@@ -18,9 +18,9 @@
           >Username is required!</div>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="userpswd">Password</label>
           <input
-            v-model="user.password"
+            v-model="user.userpswd"
             v-validate="'required'"
             type="password"
             class="form-control"
