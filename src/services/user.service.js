@@ -7,5 +7,4 @@ class UserService {
   getPublicContent() {
     return axios.get(API_URL + 'all');
   }
-
-  export default new UserService();
+}
