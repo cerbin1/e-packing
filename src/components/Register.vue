@@ -19,9 +19,9 @@
                      </div>
                 </div>
                 <div class="form-group">
-                    <label for="userEmail">Email</label>
+                    <label for="email">Email</label>
                     <input
-                        v-model="user.userEmail"
+                        v-model="user.email"
                         v-validate="'required|email|min:5|max:50'"
                         type="email"
                         class="form-control"
@@ -34,9 +34,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="userpswd">Password</label>
+                    <label for="password">Password</label>
                     <input
-                        v-model="user.userpswd"
+                        v-model="user.password"
                         v-validate="'required|min:6|max:40'"
                         type="password"
                         class="form-control"
