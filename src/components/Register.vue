@@ -51,6 +51,12 @@
             </div>
             <button type="submit" class="btn btn-primary">Register now</button>
         </form>
+        <div
+            v-if="message"
+            class="alert"
+            :class="successful ? 'alert-success' : 'alert-danger'"
+          >{{message}}
+        </div>
         </div>
   </div>
 </template>

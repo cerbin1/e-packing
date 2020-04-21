@@ -98,19 +98,19 @@ export default {
 </script>
 
 <style scoped>
-label {
-  display: block;
-  margin-top: 15px;
-}
+  label {
+    display: block;
+    margin-top: 15px;
+  }
 
-.card-container.card {
-  max-width: 400px !important;
-  padding: 25px 25px;
-}
+  .card-container.card {
+    max-width: 400px !important;
+    padding: 25px 25px;
+  }
 
-.card {
-  background-color: greenyellow;
-  padding: 20px 25px 30px;
-  margin: 25px 50px 25px;
-}
+  .card {
+    background-color: greenyellow;
+    padding: 20px 25px 30px;
+    margin: 25px 50px 25px;
+  }
 </style>

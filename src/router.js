@@ -26,6 +26,12 @@ export const router = new Router({
       path: '/register',
       component: Register
     },
+    {
+      path: '/user',
+      name: 'user',
+      // lazy-loaded
+      component: () => import('./views/BoardUser.vue')
+    }
 
   ]
 });
