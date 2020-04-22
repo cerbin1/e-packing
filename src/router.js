@@ -32,8 +32,13 @@ export const router = new Router({
       name: 'user',
       // lazy-loaded
       component: () => import('./components/BoardUser.vue')
+    },
+    {
+      path: '/exampleUserNotes',
+      name: 'exampleUserNotes',
+      // lazy-loaded
+      component: () => import('./components/ExampleUserNotes.vue')
     }
-
   ]
 });
 
