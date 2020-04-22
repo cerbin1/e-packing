@@ -42,6 +42,7 @@
           <div v-if="message" class="alert alert-danger" role="alert">{{message}}</div>
         </div>
       </form>
+    
     </div>
   </div>
 </template>
@@ -70,6 +71,7 @@ export default {
   },
   methods: {
     handleLogin() {
+      this.message = '';
       this.loading = true;
       this.$validator.validateAll().then(isValid => {
         if (!isValid) {
@@ -79,6 +81,7 @@ export default {
 
         if (this.user.username && this.user.password) {
           this.$store.dispatch('auth/login', this.user).then(
+          
             () => {
               this.$router.push('/profile');
             },
