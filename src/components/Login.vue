@@ -1,6 +1,8 @@
 <template>
-  <div class="col-md-12">
-    <div class="card card-container">
+ <section class="center">
+  <div class="col-md-12 center">
+    
+    <div class="card card-container center">
       <form name="form" @submit.prevent="handleLogin">
         <div class="form-group">
           <label for="username">Username</label>
@@ -45,6 +47,7 @@
     
     </div>
   </div>
+  </section>
 </template>
 
 <script>
@@ -112,7 +115,7 @@ export default {
   }
 
   .card {
-    background-color: greenyellow;
+    background-color: lightblue;
     padding: 20px 25px 30px;
     margin: 25px 50px 25px;
   }
