@@ -4,8 +4,8 @@
       <a href class="navbar-brand" @click.prevent>PackIT</a>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/home" class="nav-link">
-            <font-awesome-icon icon="home" />Home
+          <router-link to="/ExampleHome" class="nav-link">
+            <font-awesome-icon icon="home" />ExampleHome
           </router-link>
         </li>
         <li class="nav-item">
