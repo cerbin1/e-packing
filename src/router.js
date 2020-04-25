@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './components/Home.vue';
+//import Home from './components/Home.vue';
+import List from './components/List.vue';
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 
@@ -9,13 +10,17 @@ Vue.use(Router);
 export const router = new Router({
   mode: 'history',
   routes: [
-    {
+  /*  {
       path: '/home',
       component: Home
-    },
+    },*/
     {
       path: '/login',
       component: Login
+    },
+    {
+      path: '/list',
+      component: List
     },
     {
       path: '/register',
@@ -38,7 +43,7 @@ export const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/login', '/register', '/home'];
+  const publicPages = ['/login', '/register', '/home', '/list'];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('user');
 

@@ -4,6 +4,7 @@ import { router } from './router';
 import store from './store';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Datepicker from 'vuejs-datepicker';
 import VeeValidate from 'vee-validate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -24,6 +25,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 new Vue({
   router,
+  Datepicker,
   store,
   render: h => h(App)
 }).$mount('#app');

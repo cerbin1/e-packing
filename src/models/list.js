@@ -1,8 +1,11 @@
 export default class List {
-    constructor(dfrom, dto, totake) { //do dodania destynacja jeszcze
+    constructor(title, place, dfrom, dto, items, comment) { //do dodania destynacja jeszcze
+      this.title = title;
+      this.place = place;
       this.dfrom = dfrom;
       this.dto = dto;
-      this.totake = totake;
+      this.items = items;
+      this.comment = comment;
     }
   }
   
