@@ -11,8 +11,6 @@
         <li class="nav-item">
           <router-link to="/home" class="nav-link">
             <font-awesome-icon icon="home" />Home
-          <router-link to="/ExampleHome" class="nav-link">
-            <font-awesome-icon icon="home" />ExampleHome
           </router-link>
         </li>
 

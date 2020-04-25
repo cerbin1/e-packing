@@ -54,7 +54,7 @@ export const router = new Router({
 
 router.beforeEach((to, from, next) => {
   const publicPages = ['/login', '/register', '/home', '/list'];
-  const publicPages = ['/login', '/register', '/exampleHome'];
+  //const publicPages = ['/login', '/register', '/exampleHome'];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('user');
 
