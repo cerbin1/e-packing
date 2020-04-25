@@ -59,7 +59,7 @@
                     Beach/swimming pool
             </div><br/>
             </div>
-            <button type="submit" class="btn btn-primary">Create note</button>
+            <button type="submit" v-on:click="qwe()" class="btn btn-primary">Create note</button>
         </form>
         <div>
           <span>Title: {{title}}</span><br/>
@@ -76,15 +76,18 @@
 <script>
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8081/api/auth/';
+// const API_URL = 'http://localhost:8081/api/auth/';
 //import List from '../models/list';
+
+import authHeader from "@/services/auth-header";
 
 export default {
   name: 'List',
   data() {
     return {
    //   list: new List('', '', '','', '', ''),
-      submitted: false,
+      title: '',
+        submitted: false,
       message: '',
       diff: 0,
       comment: '',
@@ -93,7 +96,6 @@ export default {
   },
 
   methods:{
-
     days() {
       var d1 = new Date(this.dfrom);
       var d2 = new Date(this.dto);
@@ -106,6 +108,28 @@ export default {
     tobeach() { 
         this.items.push({name: "swimsuit", count: 1},{name: "sunglasses", count: 1},{name: "cream with filter", count: 1})
     },
+      qwe() {
+          // if validate
+          axios({
+              method: 'post',
+              url: 'http://localhost:8081/notes/create',
+              headers: authHeader(),
+              data: {
+                  name: this.title,
+                  items: this.items
+              }
+          }).then(
+              response => {
+                  this.content = response.data;
+              },
+              error => {
+                  this.content =
+                      (error.response && error.response.data) ||
+                      error.message ||
+                      error.toString();
+              }
+          );
+      }
 /*
     handleListCreation() {
       this.message = '';
