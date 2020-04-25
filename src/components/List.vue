@@ -74,9 +74,9 @@
 
 
 <script>
-import axios from 'axios';
+//import axios from 'axios';
 
-const API_URL = 'http://localhost:8081/api/auth/';
+//const API_URL = 'http://localhost:8081/api/auth/';
 //import List from '../models/list';
 
 export default {
