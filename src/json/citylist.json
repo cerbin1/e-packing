@@ -1,0 +1,113 @@
+[
+	{
+		"id": 2643743,
+		"name": "London",
+		"state": "",
+		"country": "GB",
+		"coord": {
+		  "lon": -0.12574,
+		  "lat": 51.50853
+		}
+  },
+  {
+    "id": 2968815,
+    "name": "Paris",
+    "state": "",
+    "country": "FR",
+    "coord": {
+      "lon": 2.3486,
+      "lat": 48.853401
+    }
+  },
+  {
+    "id": 3117735,
+    "name": "Madrid",
+    "state": "",
+    "country": "ES",
+    "coord": {
+      "lon": -3.70256,
+      "lat": 40.4165
+    }
+  },
+  {
+    "id": 2759794,
+    "name": "Amsterdam",
+    "state": "",
+    "country": "NL",
+    "coord": {
+      "lon": 4.88969,
+      "lat": 52.374031
+    }
+  },
+  {
+    "id": 3067696,
+    "name": "Prague",
+    "state": "",
+    "country": "CZ",
+    "coord": {
+      "lon": 14.42076,
+      "lat": 50.088039
+    }
+  },
+  {
+    "id": 2867714,
+    "name": "Munich",
+    "state": "",
+    "country": "DE",
+    "coord": {
+      "lon": 11.57549,
+      "lat": 48.137428
+    }
+  },
+  {
+    "id": 3143244,
+    "name": "Oslo",
+    "state": "",
+    "country": "NO",
+    "coord": {
+      "lon": 10.74609,
+      "lat": 59.912731
+    }
+  },
+  {
+    "id": 3169070,
+    "name": "Rome",
+    "state": "",
+    "country": "IT",
+    "coord": {
+      "lon": 12.4839,
+      "lat": 41.894741
+    }
+  },
+  {
+    "id": 5128581,
+    "name": "New York City",
+    "state": "NY",
+    "country": "US",
+    "coord": {
+      "lon": -74.005966,
+      "lat": 40.714272
+    }
+  },
+  {
+    "id": 2172517,
+    "name": "Canberra",
+    "state": "",
+    "country": "AU",
+    "coord": {
+      "lon": 149.128067,
+      "lat": -35.283459
+    }
+  },
+  {
+    "id": 1850147,
+    "name": "Tokyo",
+    "state": "",
+    "country": "JP",
+    "coord": {
+      "lon": 139.691711,
+      "lat": 35.689499
+    }
+  }
+]
+
