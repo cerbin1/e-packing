@@ -7,7 +7,7 @@
                     <label for="city">City</label>
                     <select v-model="city">
                       <option disabled value="">Please select City</option>
-                      <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name }" @change = 'temperature()'>{{ c.name }}</option>
+                      <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name, country: c.country}" @change = 'temperature()'>{{ c.name }}</option>
                     </select>  
                 </div>
               <div class="form-group">
@@ -162,7 +162,8 @@ export default {
                   comment: this.comment,
                   dateFrom: this.dfrom,
                   dateTo: this.dto,
-                  items: this.items
+                  items: this.items,
+                  country: this.city.country
               }
           }).then(
               response => {
