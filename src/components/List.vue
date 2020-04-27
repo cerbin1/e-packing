@@ -74,9 +74,10 @@
           <span>Dto: {{dto}}</span><br/>
           <span>Days: {{diff}}</span><br/>
           <span>List: {{ items }}</span>
-          <span>List: {{ city.city_name }}</span>
-          <span>List: {{ city.id }}</span>
-          <span>List: {{ info }}</span>
+          <span>checkbox: {{ beach }}</span>
+          <span>City: {{ city.city_name }}</span>
+          <span>City_id: {{ city.id }}</span>
+          <span>Response: {{ info }}</span>
         </div>
         <div
             v-if="message"
@@ -116,13 +117,13 @@ export default {
       items: [{name: "Kosmetyczka", count: 1},{name: "Wygodne buty", count: 1},{name: "Apteczka", count: 1},{name: "Piżama", count: 1},{name: "Klapki", count: 1},{name: "Ręcznik", count: 1}]
     };
   },
-  
+ 
   mounted(){
    // if(this.city.id > 0){
     this.temperature()
    // }
-  },
-
+  }, 
+  //https://github.com/axios/axios/issues/853
   methods:{
     temperature(){
       //const API_URL = 'api.openweathermap.org/data/2.5/weather/';
@@ -153,9 +154,11 @@ export default {
       this.items.push({name: "skarpetki", count: this.diff},{name: "bielizna", count: this.diff},{name: "spodnie/spódnica/sukienka", count: this.diff},{name: "podkoszulki/koszule", count: this.diff});
     }, 
     mountains() {
+      // if(mountain == true)
            this.items.push({name: "mounntain shoes", count: 1},{name: "termoactive clothes", count: 1},{name: "backpack", count: 1});
     },
     tobeach() { 
+      // if(beach == true)
         this.items.push({name: "swimsuit", count: 1},{name: "sunglasses", count: 1},{name: "cream with filter", count: 1})
     },
      HandleListCreation() {
