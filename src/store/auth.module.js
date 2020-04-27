@@ -21,6 +21,18 @@ export const auth = {
         }
       );
     },
+    google({ commit }, googleUser) {
+      return AuthService.googleLogin(googleUser.email).then(
+          user => {
+            commit('loginSuccess', user);
+            return Promise.resolve(user);
+          },
+          error => {
+            commit('loginFailure');
+            return Promise.reject(error);
+          }
+      );
+    },
     logout({ commit }) {
       AuthService.logout();
       commit('logout');

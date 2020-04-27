@@ -18,6 +18,21 @@ class AuthService {
       });
   }
 
+    googleLogin(googleAccountEmail) {
+        return axios
+            .post(API_URL + 'google', {
+                username: googleAccountEmail,
+                email: googleAccountEmail
+            })
+            .then(response => {
+                if (response.data.token) {
+                    localStorage.setItem('user', JSON.stringify(response.data));
+                }
+
+                return response.data;
+            });
+    }
+
   logout() {
     localStorage.removeItem('user');
   }
