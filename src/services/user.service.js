@@ -8,6 +8,11 @@ class UserService {
     return axios.get(API_URL + 'all');
   }
 
+  getAllNotes() {
+     // todo: dodać potem pobieranie notatek tylko danego usera (zalogowanego)
+    return axios.get('http://localhost:8081/notes', { headers: authHeader() });
+  }
+
   getUserBoard() {
     return axios.get(API_URL + 'user', { headers: authHeader() });
   }

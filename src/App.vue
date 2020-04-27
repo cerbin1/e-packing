@@ -4,12 +4,21 @@
       <a href class="navbar-brand" @click.prevent>PackIT</a>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
+          <router-link to="/list" class="nav-link">
+            Add List
+          </router-link>
+        </li>
+        <li class="nav-item">
           <router-link to="/home" class="nav-link">
             <font-awesome-icon icon="home" />Home
           </router-link>
         </li>
+
         <li class="nav-item">
           <router-link v-if="currentUser" to="/user" class="nav-link">User</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link v-if="currentUser" to="/exampleUserNotes" class="nav-link">Example user notes</router-link>
         </li>
       </div>
 
