@@ -29,6 +29,9 @@
             <font-awesome-icon icon="sign-in-alt" />Login
           </router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/google" class="nav-link">Google</router-link>
+        </li>
       </div>
 
       <div v-if="currentUser" class="navbar-nav ml-auto">
