@@ -10,12 +10,8 @@
         </li>
         <li class="nav-item">
           <router-link to="/BoardUser" class="nav-link">
-            <font-awesome-icon />Home
+            <font-awesome-icon />All notes
           </router-link>
-        </li>
-
-        <li class="nav-item">
-          <router-link v-if="currentUser" to="/user" class="nav-link">User</router-link>
         </li>
         <li class="nav-item">
           <router-link v-if="currentUser" to="/exampleUserNotes" class="nav-link">Example user notes</router-link>
