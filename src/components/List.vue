@@ -127,13 +127,24 @@ export default {
     temperature(){
       //const API_URL = 'api.openweathermap.org/data/2.5/weather/';
       axios
-        .get('api.openweathermap.org/data/2.5/weather/',{
+        .get('https://samples.openweathermap.org/data/2.5/weather',{
           params: {
-            id: '2172797',//this.city.id,
-            appid: '439d4b804bc8187953eb36d2a8c26a02'
+            id: 'this.city.id',
+            appid: '19d1c1955abe7831267d6cccbf9735f1' //tu juz jest nasz api id
           }
         })
         .then(response => (this.info = response))
+      /*
+      if(info.main.temp < 20){
+        this.items.push[{name: "Bluza/sweter", count: this.diff},{name: "Kurtka", count: 1}]
+      }
+      if (info.main.temp < 5){
+        this.items.push[{name: "czapka", count: 1},{name: "rękawiczki", count: 1},{name: "szalik", count: 1}]
+      }
+      if(info.hasOwnProperty(rain)==true){
+        this.items.push[{name: "parasol/płaszcz przeciwdeszczowy", count: 1}]
+      }
+      */
     },
     days() {
       var d1 = new Date(this.dfrom);
