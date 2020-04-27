@@ -1,22 +1,15 @@
 <template>
- <div id="app">
-  <table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Moje notatki:</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="(item) in content" :key="item">
-       <th scope="row">{{ item.name  }}</th>  
-       <td>{{  item.country }}</td> 
-       <td>{{  item.dateFrom }}</td>  
-       <td>{{  item.dateTo }}</td>  
-       <router-link  :to="{name: 'note', params: {notename: item.name}}" class="nav-link" >Pokaż szczegóły</router-link>
-    </tr>
-   </tbody>
-</table>
-</div>
+    <div class="container">
+        <header class="jumbotron">
+            <h3>
+                <strong>{{currentUser.username}}</strong> this is logged user hahah
+            </h3>
+        </header>
+      <tr v-for="(item) in content" :key="item.name">
+          <li>{{ item.name  }}</li>  
+           
+          </tr>
+    </div>
 </template>
 
 <script>
