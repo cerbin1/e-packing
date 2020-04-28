@@ -7,7 +7,7 @@
                     <label for="city">City</label>
                     <select v-model="city">
                       <option disabled value="">Please select City</option>
-                      <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name, country: c.country}" @change = 'temperature()'>{{ c.name }}</option>
+                      <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name, country: c.country}" >{{ c.name }}</option>
                     </select>  
                 </div>
               <div class="form-group">
@@ -47,14 +47,14 @@
                 min="2020-04-01" 
                 max="2020-06-31">
 						</div><br/>
-            <button type="button" v-on:click="days()">Confirm Dates</button>
+            <button type="button">Confirm Dates</button>
 
             <div class="form-group">
                 <label for="mountains"></label>
                 <input 
                     type="checkbox" 
                     v-model="mountain"
-                    @change='mountains'>
+                    >
                     Mountain trip
             </div><br/>
             <div class="form-group">
@@ -62,7 +62,7 @@
                 <input 
                     type="checkbox" 
                     v-model="beach"
-                    @change='tobeach'>
+                    >
                     Beach/swimming pool
             </div><br/>
             </div>
@@ -74,10 +74,9 @@
           <span>Dto: {{dto}}</span><br/>
           <span>Days: {{diff}}</span><br/>
           <span>List: {{ items }}</span>
-          <span>checkbox: {{ beach }}</span>
           <span>City: {{ city.city_name }}</span>
           <span>City_id: {{ city.id }}</span>
-          <span>Response: {{ info }}</span>
+          <span>Test: {{ temp }}</span>
         </div>
         <div
             v-if="message"
@@ -94,6 +93,7 @@
 import axios from 'axios';
 import authHeader from "@/services/auth-header";
 import json from '@/json/citylist.json';
+import w from '@/json/onecity.json';
 
 export default {
   name: 'List',
@@ -106,9 +106,10 @@ export default {
       city: '',
       dfrom: new Date(),
       dto: new Date(),
-      //dateFrom: this.dfrom
-      //dateTo: this.dto
+     // i: '',
       submitted: false,
+     // rain: false,
+      temp: 0,
       beach: false,
       mountain: false,
       message: '',
@@ -118,35 +119,38 @@ export default {
     };
   },
  
-  mounted(){
+ /* mounted(){
    // if(this.city.id > 0){
     this.temperature()
    // }
-  }, 
-  //https://github.com/axios/axios/issues/853
+  }, */
+  
   methods:{
-    temperature(){
+    /*temperature(){
+      this.info = w;
+      this.temp = this.info.main.temp;
       //const API_URL = 'api.openweathermap.org/data/2.5/weather/';
-      axios
+     /* axios
         .get('https://samples.openweathermap.org/data/2.5/weather',{
           params: {
             id: 'this.city.id',
             appid: '19d1c1955abe7831267d6cccbf9735f1' //tu juz jest nasz api id
           }
         })
-        .then(response => (this.info = response))
-      /*
-      if(info.main.temp < 20){
-        this.items.push[{name: "Bluza/sweter", count: this.diff},{name: "Kurtka", count: 1}]
+        .then(response => (this.info = response)) 
+      
+      if((this.info.main.temp - 273.15 ) < 20){
+        this.items.push({name: "Bluza/sweter", count: this.diff},{name: "Kurtka", count: 1})
       }
-      if (info.main.temp < 5){
-        this.items.push[{name: "czapka", count: 1},{name: "rękawiczki", count: 1},{name: "szalik", count: 1}]
+      if ((this.info.main.temp - 273.15 ) < 5){
+        this.items.push({name: "czapka", count: 1},{name: "rękawiczki", count: 1},{name: "szalik", count: 1})
       }
-      if(info.hasOwnProperty(rain)==true){
-        this.items.push[{name: "parasol/płaszcz przeciwdeszczowy", count: 1}]
-      }
-      */
-    },
+      if(Object.prototype.hasOwnProperty.call(this.info, this.info.rain)){
+        this.items.push({name: "parasol/płaszcz przeciwdeszczowy", count: 1})
+      } 
+      
+    }, */
+    /*
     days() {
       var d1 = new Date(this.dfrom);
       var d2 = new Date(this.dto);
@@ -154,14 +158,42 @@ export default {
       this.items.push({name: "skarpetki", count: this.diff},{name: "bielizna", count: this.diff},{name: "spodnie/spódnica/sukienka", count: this.diff},{name: "podkoszulki/koszule", count: this.diff});
     }, 
     mountains() {
-      // if(mountain == true)
+       if(this.mountain == true){
            this.items.push({name: "mounntain shoes", count: 1},{name: "termoactive clothes", count: 1},{name: "backpack", count: 1});
-    },
+       }
+   },
     tobeach() { 
-      // if(beach == true)
-        this.items.push({name: "swimsuit", count: 1},{name: "sunglasses", count: 1},{name: "cream with filter", count: 1})
-    },
+     if(this.beach == true){
+        this.items.push({name: "swimsuit", count: 1},{name: "sunglasses", count: 1},{name: "cream with filter", count: 1});
+     }
+   }, */
      HandleListCreation() {
+      //depends on day
+      var d1 = new Date(this.dfrom);
+      var d2 = new Date(this.dto);
+      this.diff = (d2.getTime() - d1.getTime()) / (1000 * 3600 * 24);
+      this.items.push({name: "skarpetki", count: this.diff},{name: "bielizna", count: this.diff},{name: "spodnie/spódnica/sukienka", count: this.diff},{name: "podkoszulki/koszule", count: this.diff});
+      //gory
+      if(this.mountain == true){
+           this.items.push({name: "mounntain shoes", count: 1},{name: "termoactive clothes", count: 1},{name: "backpack", count: 1});
+       }
+      //plaza
+      if(this.beach == true){
+        this.items.push({name: "swimsuit", count: 1},{name: "sunglasses", count: 1},{name: "cream with filter", count: 1});
+     }
+     //temperatura
+      this.info = w;
+      this.temp = this.info.main.temp;
+      if((this.info.main.temp - 273.15 ) < 20){
+        this.items.push({name: "Bluza/sweter", count: this.diff},{name: "Kurtka", count: 1})
+      }
+      if ((this.info.main.temp - 273.15 ) < 5){
+        this.items.push({name: "czapka", count: 1},{name: "rękawiczki", count: 1},{name: "szalik", count: 1})
+      }
+      if(Object.prototype.hasOwnProperty.call(this.info, this.info.rain)){
+        this.items.push({name: "parasol/płaszcz przeciwdeszczowy", count: 1})
+      }
+
       this.message = '';
       this.submitted = true;
       this.$validator.validate().then(isValid => {
