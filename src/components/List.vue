@@ -7,7 +7,7 @@
                     <label for="city">City</label>
                     <select v-model="city">
                       <option disabled value="">Please select City</option>
-                      <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name, country: c.country}" >{{ c.name }}</option>
+                      <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name, country: c.country}" @change = 'temperature()'>{{ c.name }}</option>
                     </select>  
                 </div>
               <div class="form-group">
@@ -76,7 +76,7 @@
           <span>List: {{ items }}</span>
           <span>City: {{ city.city_name }}</span>
           <span>City_id: {{ city.id }}</span>
-          <span>Test: {{ temp }}</span>
+          <span>Test: {{ ap }}</span>
         </div>
         <div
             v-if="message"
@@ -102,6 +102,7 @@ export default {
       Cities: json,
       city_id: 0,
       info: null,
+      ap: null,
       title: '',
       city: '',
       dfrom: new Date(),
@@ -119,26 +120,28 @@ export default {
     };
   },
  
- /* mounted(){
+  mounted(){
    // if(this.city.id > 0){
     this.temperature()
    // }
-  }, */
+  },  
   
   methods:{
-    /*temperature(){
-      this.info = w;
-      this.temp = this.info.main.temp;
-      //const API_URL = 'api.openweathermap.org/data/2.5/weather/';
+    temperature(){
+     // const API_URL = 'api.openweathermap.org/data/2.5/weather/';
      /* axios
         .get('https://samples.openweathermap.org/data/2.5/weather',{
           params: {
-            id: 'this.city.id',
+            id: '2643743', //2643743
             appid: '19d1c1955abe7831267d6cccbf9735f1' //tu juz jest nasz api id
           }
         })
-        .then(response => (this.info = response)) 
-      
+        .then(response => (this.ap = response)) 
+        */
+        axios
+        .get ('https://samples.openweathermap.org/data/2.5/weather?id=2643743&appid=19d1c1955abe7831267d6cccbf9735f1')
+        .then(response => (this.ap = response))
+      /*
       if((this.info.main.temp - 273.15 ) < 20){
         this.items.push({name: "Bluza/sweter", count: this.diff},{name: "Kurtka", count: 1})
       }
@@ -148,8 +151,8 @@ export default {
       if(Object.prototype.hasOwnProperty.call(this.info, this.info.rain)){
         this.items.push({name: "parasol/płaszcz przeciwdeszczowy", count: 1})
       } 
-      
-    }, */
+      */
+    }, 
     /*
     days() {
       var d1 = new Date(this.dfrom);
