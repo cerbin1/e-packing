@@ -12,7 +12,12 @@
        <td>{{  item.country }}</td> 
        <td>{{  item.dateFrom }}</td>  
        <td>{{  item.dateTo }}</td>  
-       <router-link  :to="{name: 'note', params: {notename: item.name}}" class="nav-link" >Pokaż szczegóły</router-link>
+       <router-link  :to="{name: 'note', params: {noteid: item.id}}" class="nav-link" >Pokaż szczegóły</router-link>
+       <router-link 
+          :to="{ name: 'note', 
+           params: { exampleProp: item.id }}">
+              Link to My Component
+       </router-link>
     </tr>
    </tbody>
 </table>

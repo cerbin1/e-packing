@@ -2,13 +2,12 @@
     <div class="container">
         <header class="jumbotron">
             <h3>
-                <strong>{{currentUser.username}}</strong> this is logged user hahah
+                <strong>{{currentUser.username}}</strong> this is logged user
+                <strong>{{Object}}</strong> this my note
             </h3>
-        </header>
-      <tr v-for="(item) in content" :key="item.name">
-          <li>{{ item.name  }}</li>  
            
-          </tr>
+        </header>
+      
     </div>
 </template>
 
@@ -16,11 +15,19 @@
     import UserService from "@/services/user.service";
 
     export default {
-        name: 'ExampleUserNotes',
+        
+        name: 'Note',
+        
+    props: {
+        exampleProp: Object
+    },
         computed: {
             currentUser() {
                 return this.$store.state.auth.user;
-            }
+            },
+        note() {
+            return this.$route.query.myprop;
+        },
         },
         data() {
             return {

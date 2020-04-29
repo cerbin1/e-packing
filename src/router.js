@@ -7,6 +7,7 @@ import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 import Google from './components/Google.vue';
 import Note from './components/Note.vue';
+//import ExampleUserNotes from './components/ExampleUserNotes.vue';
 
 Vue.use(Router);
 
@@ -46,7 +47,7 @@ export const router = new Router({
       component: () => import('./components/BoardUser.vue')
     },
     {
-      path: '/exampleUserNotes/:notename',
+      path: '/exampleUserNotes/:noteid',
       name: 'exampleUserNotes',
       // lazy-loaded
       component: () => import('./components/ExampleUserNotes.vue')
@@ -56,11 +57,17 @@ export const router = new Router({
       name: 'google',
       component: Google
     },
-    {
-      path: '/note/:notename',
+    /*{
+      path: '/Note/:noteid',
       name: 'note',
       component: Note
-    }
+    },*/
+    {
+      path: '/Note/:id',
+      name: 'note',
+      component: Note,
+      props: true
+  },
   ]
 });
 
