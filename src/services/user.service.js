@@ -13,6 +13,11 @@ class UserService {
     return axios.get('http://localhost:8081/notes', { headers: authHeader() });
   }
 
+  getOneNote() {
+    // todo: dodać potem pobieranie notatek tylko danego usera (zalogowanego)
+   return axios.get('localhost:8081/note' , {params}, { headers: authHeader() });
+ }
+
   getUserBoard() {
     return axios.get(API_URL + 'user', { headers: authHeader() });
   }

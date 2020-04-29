@@ -4,6 +4,36 @@
             <h3>
                
                 <strong>{{exampleProp}}</strong> this my note id
+
+                   <ul id="example-1">
+            <li v-for="item in content" :key="item.id">
+                notatka o id: {{exampleProp}}
+                <ul>
+                    <li>
+                        nazwa notatki: {{ exampleProp.name }}
+                    </li>
+                    <li>
+                        kraj: {{ item.country }}
+                    </li>
+                    <li>
+                        miasto: {{ item.city }}
+                    </li>
+                    <li>
+                        komentarz: {{ item.comment }}
+                    </li>
+                    <li>
+                        data od: {{ item.dateFrom }}
+                    </li>
+                    <li>
+                        data do: {{ item.dateTo }}
+                    </li>
+                    <li>
+                        przedmioty: {{ item.items }}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+            
                 
             </h3>
             <router-link :to="{ name: 'user'}">Pokaż wszystkkie</router-link>
@@ -38,7 +68,7 @@
         },
         mounted() {
             if (this.currentUser) {
-                UserService.getAllNotes().then(
+                UserService.getOneNote().then(
                     response => {
                         this.content = response.data;
                     },
