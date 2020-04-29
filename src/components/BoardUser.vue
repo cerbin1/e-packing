@@ -12,7 +12,11 @@
        <td>{{  item.country }}</td> 
        <td>{{  item.dateFrom }}</td>  
        <td>{{  item.dateTo }}</td>  
-       <router-link v-if="currentUser" to="/exampleUserNotes" class="nav-link">Pokaż szczegóły</router-link>
+       <router-link 
+          :to="{ name: 'note', 
+           params: { exampleProp: item.id }}">
+              Pokaż szczegóły
+       </router-link>
     </tr>
    </tbody>
 </table>
