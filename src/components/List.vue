@@ -69,6 +69,8 @@
             <button type="submit" v-on:click="HandleListCreation()" class="btn btn-primary">Create note</button>
         </form>
         <div>
+          <span>Ap: {{ temp }}</span>
+          <span>Ap: {{ ap }}</span>
           <span>Title: {{title}}</span><br/>
           <span>Dfrom: {{dfrom}}</span><br/>
           <span>Dto: {{dto}}</span><br/>
@@ -76,7 +78,7 @@
           <span>List: {{ items }}</span>
           <span>City: {{ city.city_name }}</span>
           <span>City_id: {{ city.id }}</span>
-          <span>Test: {{ ap }}</span>
+          
         </div>
         <div
             v-if="message"
@@ -93,7 +95,7 @@
 import axios from 'axios';
 import authHeader from "@/services/auth-header";
 import json from '@/json/citylist.json';
-import w from '@/json/onecity.json';
+//import w from '@/json/onecity.json';
 
 export default {
   name: 'List',
@@ -107,9 +109,7 @@ export default {
       city: '',
       dfrom: new Date(),
       dto: new Date(),
-     // i: '',
       submitted: false,
-     // rain: false,
       temp: 0,
       beach: false,
       mountain: false,
@@ -119,57 +119,9 @@ export default {
       items: [{name: "Kosmetyczka", count: 1},{name: "Wygodne buty", count: 1},{name: "Apteczka", count: 1},{name: "Piżama", count: 1},{name: "Klapki", count: 1},{name: "Ręcznik", count: 1}]
     };
   },
- 
-  mounted(){
-   // if(this.city.id > 0){
-    this.temperature()
-   // }
-  },  
   
   methods:{
-    temperature(){
-     // const API_URL = 'api.openweathermap.org/data/2.5/weather/';
-     /* axios
-        .get('https://samples.openweathermap.org/data/2.5/weather',{
-          params: {
-            id: '2643743', //2643743
-            appid: '19d1c1955abe7831267d6cccbf9735f1' //tu juz jest nasz api id
-          }
-        })
-        .then(response => (this.ap = response)) 
-        */
-        axios
-        .get ('https://samples.openweathermap.org/data/2.5/weather?id=2643743&appid=19d1c1955abe7831267d6cccbf9735f1')
-        .then(response => (this.ap = response))
-      /*
-      if((this.info.main.temp - 273.15 ) < 20){
-        this.items.push({name: "Bluza/sweter", count: this.diff},{name: "Kurtka", count: 1})
-      }
-      if ((this.info.main.temp - 273.15 ) < 5){
-        this.items.push({name: "czapka", count: 1},{name: "rękawiczki", count: 1},{name: "szalik", count: 1})
-      }
-      if(Object.prototype.hasOwnProperty.call(this.info, this.info.rain)){
-        this.items.push({name: "parasol/płaszcz przeciwdeszczowy", count: 1})
-      } 
-      */
-    }, 
-    /*
-    days() {
-      var d1 = new Date(this.dfrom);
-      var d2 = new Date(this.dto);
-      this.diff = (d2.getTime() - d1.getTime()) / (1000 * 3600 * 24);
-      this.items.push({name: "skarpetki", count: this.diff},{name: "bielizna", count: this.diff},{name: "spodnie/spódnica/sukienka", count: this.diff},{name: "podkoszulki/koszule", count: this.diff});
-    }, 
-    mountains() {
-       if(this.mountain == true){
-           this.items.push({name: "mounntain shoes", count: 1},{name: "termoactive clothes", count: 1},{name: "backpack", count: 1});
-       }
-   },
-    tobeach() { 
-     if(this.beach == true){
-        this.items.push({name: "swimsuit", count: 1},{name: "sunglasses", count: 1},{name: "cream with filter", count: 1});
-     }
-   }, */
+    
      HandleListCreation() {
       //depends on day
       var d1 = new Date(this.dfrom);
@@ -185,8 +137,18 @@ export default {
         this.items.push({name: "swimsuit", count: 1},{name: "sunglasses", count: 1},{name: "cream with filter", count: 1});
      }
      //temperatura
-      this.info = w;
-      this.temp = this.info.main.temp;
+     axios
+        .get('https://api.openweathermap.org/data/2.5/weather',{
+          params: {
+            id: this.city.id, //2643743
+            appid: '19d1c1955abe7831267d6cccbf9735f1' //tu juz jest nasz api id
+          }
+        })
+        .then(response => (this.ap = response.data))
+      
+     // this.info = w;
+      this.temp = this.ap.main.temp; 
+     /* this.temp = this.info.main.temp;
       if((this.info.main.temp - 273.15 ) < 20){
         this.items.push({name: "Bluza/sweter", count: this.diff},{name: "Kurtka", count: 1})
       }
@@ -195,7 +157,7 @@ export default {
       }
       if(Object.prototype.hasOwnProperty.call(this.info, this.info.rain)){
         this.items.push({name: "parasol/płaszcz przeciwdeszczowy", count: 1})
-      }
+      }*/
 
       this.message = '';
       this.submitted = true;

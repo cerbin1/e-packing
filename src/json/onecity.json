@@ -1,33 +1,10 @@
-{"coord":
-    {"lon":145.77,
-    "lat":-16.92},
-"weather":[
-    {"id":802,
-    "main":"Clouds",
-    "description":"scattered clouds",
-    "icon":"03n"}
-],
-"base":"stations",
-"main":{
-    "temp":290.15,
-    "pressure":1007,
-    "humidity":74,
-    "temp_min":300.15,
-    "temp_max":300.15},
-    "visibility":10000,
-"wind":{
-    "speed":3.6,
-    "deg":160},
-"clouds":{
-    "all":40},
-    "dt":1485790200,
-"sys":{
-    "type":1,
-    "id":8166,
-    "message":0.2064,
-    "country":"AU",
-    "sunrise":1485720272,
-    "sunset":1485766550},
-    "id":2172797,
-    "name":"Cairns",
-    "cod":200}
+{ "data": 
+    { 
+        "coord": { "lon": -0.13, "lat": 51.51 }, 
+        "weather": [ { "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04d" } ],
+        "base": "stations", 
+        "main": { "temp": 286.09, "feels_like": 282.6, "temp_min": 285.93, "temp_max": 286.48, "pressure": 999, "humidity": 76 }, 
+        "visibility": 10000, "wind": { "speed": 4.6, "deg": 220 }, 
+        "clouds": { "all": 75 }, "dt": 1588175292, 
+        "sys": { "type": 1, "id": 1414, "country": "GB", "sunrise": 1588134919, "sunset": 1588188006 }, 
+        "timezone": 3600, "id": 2643743, "name": "London", "cod": 200 }, "status": 200, "statusText": "OK", "headers": { "content-length": "466", "content-type": "application/json; charset=utf-8" }, "config": { "url": "https://api.openweathermap.org/data/2.5/weather?id=2643743&appid=19d1c1955abe7831267d6cccbf9735f1", "method": "get", "headers": { "Accept": "application/json, text/plain, */*" }, "transformRequest": [ null ], "transformResponse": [ null ], "timeout": 0, "xsrfCookieName": "XSRF-TOKEN", "xsrfHeaderName": "X-XSRF-TOKEN", "maxContentLength": -1 }, "request": {} }
