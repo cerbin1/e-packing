@@ -25,5 +25,11 @@ class UserService {
   getNotesByUserId(id) {
     return axios.get('http://localhost:8081/userNotes?userId=' + id, { headers: authHeader() });
   }
+
+    updateComment(id, commentValue) {
+        return axios.put('http://localhost:8081/addComment?id=' + id,
+            {value: commentValue},
+            {headers: authHeader()})
+    }
 }
 export default new UserService();
