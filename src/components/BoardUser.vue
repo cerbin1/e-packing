@@ -36,7 +36,7 @@
         },
         mounted() {
             if (this.currentUser) {
-                UserService.getAllNotes().then(
+                UserService.getNotesByUserId(this.currentUser.id).then(
                     response => {
                         this.content = response.data;
                     },

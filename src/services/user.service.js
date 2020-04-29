@@ -16,5 +16,9 @@ class UserService {
   getUserBoard() {
     return axios.get(API_URL + 'user', { headers: authHeader() });
   }
+
+  getNotesByUserId(id) {
+    return axios.get('http://localhost:8081/userNotes?userId=' + id, { headers: authHeader() });
+  }
 }
 export default new UserService();
