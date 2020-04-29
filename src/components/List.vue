@@ -169,7 +169,7 @@ export default {
        if (isValid) {
           axios({
               method: 'post',
-              url: 'http://localhost:8081/notes/create?userId=' + user.id,
+              url: 'http://localhost:8081/notes/createUserNote?userId=' + user.id,
               headers: authHeader(),
               data: {
                   name: this.name,
