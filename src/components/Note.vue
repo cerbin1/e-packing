@@ -2,8 +2,8 @@
     <div class="container">
         <header class="jumbotron">
             <h3>
-                <strong>{{currentUser.username}}</strong> this is logged user
-                <strong>{{Object}}</strong> this my note
+               
+                <strong>{{exampleProp}}</strong> this my note id
             </h3>
            
         </header>
@@ -19,7 +19,7 @@
         name: 'Note',
         
     props: {
-        exampleProp: Object
+        exampleProp: String
     },
         computed: {
             currentUser() {
