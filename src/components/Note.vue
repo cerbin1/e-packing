@@ -4,7 +4,9 @@
             <h3>
                
                 <strong>{{exampleProp}}</strong> this my note id
+                
             </h3>
+            <router-link :to="{ name: 'user'}">Pokaż wszystkkie</router-link>
            
         </header>
       

@@ -57,13 +57,8 @@ export const router = new Router({
       name: 'google',
       component: Google
     },
-    /*{
-      path: '/Note/:noteid',
-      name: 'note',
-      component: Note
-    },*/
     {
-      path: '/Note/:id',
+      path: '/Note/:noteid',
       name: 'note',
       component: Note,
       props: true
