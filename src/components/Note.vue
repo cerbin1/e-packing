@@ -2,44 +2,40 @@
     <div class="container">
         <header class="jumbotron">
             <h3>
-               
+
                 <strong>{{exampleProp}}</strong> this my note id
 
-                   <ul id="example-1">
-            <li v-for="item in content" :key="item.id">
                 notatka o id: {{exampleProp}}
-                <ul>
+                <ul id="example-1">
                     <li>
-                        nazwa notatki: {{ exampleProp.name }}
+                        nazwa notatki: {{ content.name }}
                     </li>
                     <li>
-                        kraj: {{ item.country }}
+                        kraj: {{ content.country }}
                     </li>
                     <li>
-                        miasto: {{ item.city }}
+                        miasto: {{ content.city }}
                     </li>
                     <li>
-                        komentarz: {{ item.comment }}
+                        komentarz: {{ content.comment }}
                     </li>
                     <li>
-                        data od: {{ item.dateFrom }}
+                        data od: {{ content.dateFrom }}
                     </li>
                     <li>
-                        data do: {{ item.dateTo }}
+                        data do: {{ content.dateTo }}
                     </li>
                     <li>
-                        przedmioty: {{ item.items }}
+                        przedmioty: {{ content.items }}
                     </li>
                 </ul>
-            </li>
-        </ul>
-            
-                
+
+
             </h3>
             <router-link :to="{ name: 'user'}">Pokaż wszystkkie</router-link>
-           
+
         </header>
-      
+
     </div>
 </template>
 
@@ -47,19 +43,19 @@
     import UserService from "@/services/user.service";
 
     export default {
-        
+
         name: 'Note',
-        
-    props: {
-        exampleProp: String
-    },
+
+        props: {
+            exampleProp: String
+        },
         computed: {
             currentUser() {
                 return this.$store.state.auth.user;
             },
-        note() {
-            return this.$route.query.myprop;
-        },
+            note() {
+                return this.$route.query.myprop;
+            },
         },
         data() {
             return {
@@ -68,7 +64,7 @@
         },
         mounted() {
             if (this.currentUser) {
-                UserService.getOneNote().then(
+                UserService.getOneNote(this.exampleProp).then(
                     response => {
                         this.content = response.data;
                     },
