@@ -30,12 +30,16 @@
                     </li>
                 </ul>
 
-
             </h3>
             <router-link :to="{ name: 'user'}">Pokaż wszystkkie</router-link>
 
         </header>
 
+        <label>
+            Komentarz do notatki
+            <input v-model="commentValue" type="text">
+        </label>
+        <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary">zapisz komentarz</button>
     </div>
 </template>
 
@@ -59,7 +63,8 @@
         },
         data() {
             return {
-                content: ''
+                content: '',
+                commentValue: ''
             };
         },
         mounted() {
@@ -78,6 +83,21 @@
             } else {
                 this.$router.push('/login');
             }
-        }
+        },
+        methods:
+            {
+                saveComment() {
+                    UserService.updateComment(this.content.id, this.commentValue).then(
+                        () => {
+                            alert("pomyslnie zapisano komentarz");
+                            this.content.comment = this.commentValue;
+                            this.commentValue = ''
+                        },
+                        error => {
+                            alert("Error przy ddoaniu komentarza: " + error)
+                        }
+                    );
+                }
+            }
     };
 </script>
