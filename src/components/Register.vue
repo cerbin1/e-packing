@@ -1,10 +1,18 @@
 <template>
-  <div class="col-md-12">
-    <div class="card card-container">
-        <form name="form" @submit.prevent="handleRegister">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="username">Username</label>
+  <section class="form-elegant center">
+     <img alt="Vue logo" src="./b.jpg" class="rounded mx-auto d-block">
+     <form name="form" @submit.prevent="handleRegister">
+    <mdb-row class="justify-content-center">
+     
+      <mdb-col md="5">
+        <mdb-card>
+          <mdb-card-body class="mx-4">
+            <div class="text-center">
+              <h3 class="dark-grey-text mb-5"><strong>PackIT</strong></h3>
+            </div>
+            <div class="text-center mb-3">
+              <div>
+                <label for="username">Username</label>
                     <input
                         v-model="user.username"
                         v-validate="'required|min:4|max:25'"
@@ -17,10 +25,8 @@
                         class="alert-danger"
                      >{{errors.first('username')}}
                      </div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input
+                     <label for="email">Email</label>
+           <input
                         v-model="user.email"
                         v-validate="'required|email|min:5|max:50'"
                         type="email"
@@ -32,9 +38,7 @@
                         class="alert-danger"
                     >{{errors.first('email')}}
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
+        <label for="password">Password</label>
                     <input
                         v-model="user.password"
                         v-validate="'required|min:6|max:40'"
@@ -47,25 +51,64 @@
                         class="alert-danger"
                     >{{errors.first('password')}}
                     </div>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Register now</button>
-        </form>
-        <div
+              </div>
+              </div>  
+               <div class="form-group">
+          <button type="submit" class="btn btn-primary">Register now</button>
+        </div>
+         <div
             v-if="message"
             class="alert"
             :class="successful ? 'alert-success' : 'alert-danger'"
           >{{message}}
-        </div>
-        </div>
-  </div>
+        </div> 
+          </mdb-card-body>
+          <mdb-modal-footer class="mx-5 pt-3 mb-1">
+          <h12 class="dark-grey-text mb-5">Make packing easy</h12>
+          </mdb-modal-footer>
+        </mdb-card>
+      </mdb-col>
+    </mdb-row>
+    </form>
+  </section>
 </template>
+<style>
+  .form-elegant .font-small {
+    font-size: 0.8rem; }
+  .form-elegant .z-depth-1a {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+    box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25); }
+  .form-elegant .z-depth-1-half,
+  .form-elegant .btn:hover {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15); }
+</style>
 
 <script>
 import User from '../models/user';
+import { mdbRow, mdbCol, mdbCard, mdbCardBody, 
+  //mdbInput, 
+  //mdbBtn, 
+  //mdbIcon, 
+  //mdbModal, 
+  //mdbModalBody, 
+  mdbModalFooter } from 'mdbvue';
 
 export default {
   name: 'Register',
+      components: {
+      mdbRow,
+      mdbCol,
+      mdbCard,
+      mdbCardBody,
+      //mdbInput,
+      //mdbBtn,
+      //mdbIcon,
+      //mdbModal,
+      //mdbModalBody,
+      mdbModalFooter,
+    
+    },
   data() {
     return {
       user: new User('', '', ''),
@@ -122,7 +165,7 @@ label {
 }
 
 .card {
-  background-color: greenyellow;
+  background-color: lightblue;
   padding: 20px 25px 30px;
   margin: 25px 50px 25px;
 }
