@@ -2,61 +2,61 @@
     <div class="container">
         <header class="jumbotron">
             <h3>
-Moja podróż do <strong>{{content.name}}</strong>
-
+My trip <strong>{{content.name}}</strong>
+               
                     <table class="table table-striped">
-
+                         
   <thead>
     <tr>
-
-      <th>Kraj</th>
-       <th>Miasto</th>
-       <th>Od:</th>
-       <th>Do:</th>
+     
+      <th>Country</th>
+       <th>City</th>
+       <th>From</th>
+       <th>To</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-       <td>{{content.country}}</td>
-       <td>{{content.city}}</td>
-       <td>{{content.dateFrom}}</td>
-       <td>{{content.dateTo}}</td>
+    <tr>       
+       <td>{{content.country}}</td> 
+       <td>{{content.city}}</td>   
+       <td>{{content.dateFrom}}</td>  
+       <td>{{content.dateTo}}</td>  
     </tr>
    </tbody>
 </table>
-
+               
                          <div>
-                         Komentarze:<div class="container p-3 my-3 border bg-white text-black">{{content.comment}}</div>
+                         Comment:<div class="container p-3 my-3 border bg-white text-black">{{content.comment}}</div>
                          <table class="table table-striped">
   <thead>
     <tr>
-      <th>Potrzebne przedmioty:</th>
+      <th>List of needed items:</th>
     </tr>
   </thead>
   <tbody>
     <tr v-for="item in content.items" :key="item.id">
-       <th scope="row">{{ item.name  }}</th>
-       <td>{{  item.count }}</td>
-       <td>{{  item.dateFrom }}</td>
-       <td>{{  item.dateTo }}</td>
+       <th scope="row">{{ item.name  }}</th>  
+       <td>{{  item.count }}</td> 
+       <td>{{  item.dateFrom }}</td>  
+       <td>{{  item.dateTo }}</td>  
     </tr>
    </tbody>
 </table>
 </div>
-
+       
 
             </h3>
-            <router-link :to="{ name: 'user'}">Pokaż wszystkkie</router-link>
+            <router-link :to="{ name: 'user'}">Show all notes</router-link>
 
         </header>
         <button type="submit" @click.stop.prevent="copyToGoogleKeep()" class="btn btn-primary btn-block">Copy for Google Kepp</button>
 
             <div class="form-group">
-  <label for="comment">Komentarz do notatki:</label>
+  <label for="comment">Comment:</label>
   <textarea v-model="commentValue" class="form-control" rows="5" id="comment"></textarea>
 </div>
-
-        <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">zapisz komentarz</button>
+      
+        <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">save comment</button>
     </div>
 </template>
 

@@ -178,18 +178,10 @@ export default {
 
 </script>
 
-<style scoped>
-  label {
-    display: block;
-    margin-top: 15px;
-  }
+<style>
+
   .card-container.card {
-    max-width: 400px !important;
+    max-width: 500px !important;
     padding: 25px 25px;
-  }
-  .card {
-    background-color: lightblue;
-    padding: 20px 25px 30px;
-    margin: 25px 50px 25px;
   }
 </style>

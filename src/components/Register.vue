@@ -54,7 +54,10 @@
               </div>
               </div>  
                <div class="form-group">
-          <button type="submit" class="btn btn-primary">Register now</button>
+                 <button type="submit" class="btn btn-primary btn-block" >
+            <span v-show="loading" class="spinner-border spinner-border-sm"></span>
+            <span>Register now</span>
+          </button>
         </div>
          <div
             v-if="message"
