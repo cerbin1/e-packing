@@ -3,12 +3,12 @@
         <header class="jumbotron">
             <h3>
 Moja podróż do <strong>{{content.name}}</strong>
-               
+
                     <table class="table table-striped">
-                         
+
   <thead>
     <tr>
-     
+
       <th>Kraj</th>
        <th>Miasto</th>
        <th>Od:</th>
@@ -16,15 +16,15 @@ Moja podróż do <strong>{{content.name}}</strong>
     </tr>
   </thead>
   <tbody>
-    <tr>       
-       <td>{{content.country}}</td> 
-       <td>{{content.city}}</td>   
-       <td>{{content.dateFrom}}</td>  
-       <td>{{content.dateTo}}</td>  
+    <tr>
+       <td>{{content.country}}</td>
+       <td>{{content.city}}</td>
+       <td>{{content.dateFrom}}</td>
+       <td>{{content.dateTo}}</td>
     </tr>
    </tbody>
 </table>
-               
+
                          <div>
                          Komentarze:<div class="container p-3 my-3 border bg-white text-black">{{content.comment}}</div>
                          <table class="table table-striped">
@@ -35,26 +35,27 @@ Moja podróż do <strong>{{content.name}}</strong>
   </thead>
   <tbody>
     <tr v-for="item in content.items" :key="item.id">
-       <th scope="row">{{ item.name  }}</th>  
-       <td>{{  item.count }}</td> 
-       <td>{{  item.dateFrom }}</td>  
-       <td>{{  item.dateTo }}</td>  
+       <th scope="row">{{ item.name  }}</th>
+       <td>{{  item.count }}</td>
+       <td>{{  item.dateFrom }}</td>
+       <td>{{  item.dateTo }}</td>
     </tr>
    </tbody>
 </table>
 </div>
-       
+
 
             </h3>
             <router-link :to="{ name: 'user'}">Pokaż wszystkkie</router-link>
 
-        </header>     
-            
+        </header>
+        <button type="submit" @click.stop.prevent="copyToGoogleKeep()" class="btn btn-primary btn-block">Copy for Google Kepp</button>
+
             <div class="form-group">
   <label for="comment">Komentarz do notatki:</label>
   <textarea v-model="commentValue" class="form-control" rows="5" id="comment"></textarea>
 </div>
-      
+
         <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">zapisz komentarz</button>
     </div>
 </template>
@@ -113,6 +114,15 @@ Moja podróż do <strong>{{content.name}}</strong>
                             alert("Error przy ddoaniu komentarza: " + error)
                         }
                     );
+                },
+                copyToGoogleKeep() {
+                    let itemsToCopy = '';
+                    this.content.items.forEach(item => itemsToCopy += item.name + ' ' + item.count + '\n');
+                    navigator.clipboard.writeText(itemsToCopy.toString()).then(function () {
+                        alert("Gotowe do wklejenia do Google Kepp");
+                    }, function () {
+                        alert("Could not copy");
+                    });
                 }
             }
     };
