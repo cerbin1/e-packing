@@ -20,12 +20,13 @@ Moja podróż do <strong>{{content.name}}</strong>
        <td>{{content.country}}</td> 
        <td>{{content.city}}</td>   
        <td>{{content.dateFrom}}</td>  
-       <td>{{content.dateTo }}</td>  
+       <td>{{content.dateTo}}</td>  
     </tr>
    </tbody>
 </table>
                
                          <div>
+                         Komentarze:<div class="container p-3 my-3 border bg-white text-black">{{content.comment}}</div>
                          <table class="table table-striped">
   <thead>
     <tr>
@@ -47,13 +48,14 @@ Moja podróż do <strong>{{content.name}}</strong>
             </h3>
             <router-link :to="{ name: 'user'}">Pokaż wszystkkie</router-link>
 
-        </header>
-
-        <label>
-            Komentarz do notatki
-            <input v-model="commentValue" type="text">
-        </label>
-        <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary">zapisz komentarz</button>
+        </header>     
+            
+            <div class="form-group">
+  <label for="comment">Komentarz do notatki:</label>
+  <textarea v-model="commentValue" class="form-control" rows="5" id="comment"></textarea>
+</div>
+      
+        <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">zapisz komentarz</button>
     </div>
 </template>
 
