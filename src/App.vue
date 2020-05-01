@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand navbar-light" style="background-color: #ff8533;" >
+    <nav class="navbar navbar-expand navbar-light" style="background-color: #666699;" >
       <a href class="navbar-brand" @click.prevent>PackIT</a>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
