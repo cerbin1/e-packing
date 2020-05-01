@@ -179,17 +179,15 @@ export default {
 </script>
 
 <style>
-
+label {
+  display: block;
+  margin-top: 15px;
+}
 
   .card-container.card {
     max-width: 500px !important;
     padding: 25px 25px;
-    align-content: center;
   }
 
-  .card {
-    background-color: greenyellow;
-    padding: 20px 25px 30px;
-    margin: 25px 50px 25px;
-  }
+
 </style>
