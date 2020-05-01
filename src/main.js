@@ -4,6 +4,8 @@ import { router } from './router';
 import store from './store';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
 import Datepicker from 'vuejs-datepicker';
 import VeeValidate from 'vee-validate';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -12,17 +14,22 @@ import GSignInButton from 'vue-google-signin-button';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 import {
   faPlus,
+  faMountain,
+  faUmbrellaBeach,
+  faCalendarAlt,
+  faCity,
+  faAtlas,
   faHome,
   faUser,
   faUserPlus,
   faSignInAlt,
   faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
+library.add(faHome,faPlus, faUser,faGoogle, faMountain, faUmbrellaBeach, faUserPlus, faCalendarAlt, faCity, faSignInAlt, faSignOutAlt,faAtlas);
 
-library.add(faHome, faPlus, faUser, faUserPlus, faSignInAlt, faSignOutAlt, faGoogle);
 
 Vue.config.productionTip = false;
-
+Vue.use(Vuetify)
 Vue.use(VeeValidate);
 Vue.use(GSignInButton);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
