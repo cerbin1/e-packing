@@ -2,16 +2,8 @@
   <div class="col-md-12">
     <div class="card card-container">
         <form name="form">
-            <div class="form-row">
-                 <div class="form-group">
-                    <label for="city">City</label>
-                    <select v-model="city">
-                      <option disabled value="">Please select City</option>
-                      <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name, country: c.country}">{{ c.name }}</option>
-                    </select>  
-                </div>
               <div class="form-group">
-                    <label for="name">Title</label>
+                    <label for="name" style="font-size:24px"><font-awesome-icon icon="atlas" style="font-size:24px"/> Title</label>
                     <input
                         v-model="name"
                         v-validate="'required|min:4|max:25'"
@@ -23,10 +15,17 @@
                         v-if="submitted && errors.has('title')"
                         class="alert-danger"
                      >{{errors.first('title')}}
-                     </div><br/>
+                     </div>
                 </div>
                 <div class="form-group">
-                        <label for="dfrom">Start date</label>
+                    <label for="city" style="font-size:20px"><font-awesome-icon icon="city" style="font-size:20px"/> City</label><br />
+                    <select v-model="city">
+                      <option disabled value="">Please select City</option>
+                      <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name, country: c.country}">{{ c.name }}</option>
+                    </select>  
+                </div>
+                <div class="form-group">
+                        <label for="dfrom" style="font-size:20px"><font-awesome-icon icon="calendar-alt" style="font-size:20px"/> Start date</label><br />
                         <input 
                           type="date" 
                           v-model="dfrom" 
@@ -35,36 +34,31 @@
                           value="2020-01-22"
                           min="2020-04-01" 
                           max="2020-06-31">
-                </div><br/>
-						<div class="form-group">
-							<label for="dto">End date</label>
-							<input 
-                type="date" 
-                v-model="dto" 
-                id = "end"
-                v-validate="'required'"
-                value="2020-01-22"
-                min="2020-04-01" 
-                max="2020-06-31">
-						</div><br/>
+                </div>
+                <div class="form-group">
+                  <label for="dto" style="font-size:20px"><font-awesome-icon icon="calendar-alt" style="font-size:20px"/> End date </label><br />
+                  <input 
+                    type="date" 
+                    v-model="dto" 
+                    id = "end"
+                    v-validate="'required'"
+                    value="2020-01-22"
+                    min="2020-04-01" 
+                    max="2020-06-31">
+                </div>
 
-            <div class="form-group">
-                <label for="mountains"></label>
-                <input 
-                    type="checkbox" 
-                    v-model="mountain"
-                    >
-                    Mountain trip
-            </div><br/>
-            <div class="form-group">
-                <label for="beach"></label>
-                <input 
-                    type="checkbox" 
-                    v-model="beach"
-                    >
-                    Beach/swimming pool
-            </div><br/>
-            </div>
+                <div class="form-group">
+                    <label for="mountains" style="font-size:18px"><font-awesome-icon icon="mountain" style="font-size:18px"/> Mountain trip&nbsp;</label>
+                    <input 
+                        type="checkbox" 
+                        v-model="mountain">
+                </div>
+                <div class="form-group">
+                    <label for="beach" style="font-size:18px"><font-awesome-icon icon="umbrella-beach" style="font-size:18px"/> Beach&nbsp;</label>
+                    <input 
+                        type="checkbox" 
+                        v-model="beach">
+                </div>
             <button type="submit" @click.stop.prevent="HandleListCreation()" class="btn btn-primary">Create note</button>
         </form>
         <div
@@ -101,7 +95,7 @@ export default {
       message: '',
       diff: 0,
       comment: '',
-      items: [{name: "Kosmetyczka", count: 1},{name: "Wygodne buty", count: 1},{name: "Apteczka", count: 1},{name: "Piżama", count: 1},{name: "Klapki", count: 1},{name: "Ręcznik", count: 1}]
+      items: [{name: "Beautician", count: 1},{name: "Comfortable shoes", count: 1},{name: "First aid kit", count: 1},{name: "Pajamas", count: 1},{name: "Slippers", count: 1},{name: "Towel", count: 1}]
     };
   },
   
@@ -113,34 +107,34 @@ export default {
       var d1 = new Date(this.dfrom);
       var d2 = new Date(this.dto);
       this.diff = (d2.getTime() - d1.getTime()) / (1000 * 3600 * 24);
-      this.items.push({name: "skarpetki", count: this.diff},{name: "bielizna", count: this.diff},{name: "spodnie/spódnica/sukienka", count: this.diff},{name: "podkoszulki/koszule", count: this.diff});
+      this.items.push({name: "Socks", count: this.diff},{name: "Underwear", count: this.diff},{name: "Pants / skirt / dress", count: this.diff},{name: "Singlets / shirts", count: this.diff});
       //gory
       if(this.mountain == true){
-           this.items.push({name: "mounntain shoes", count: 1},{name: "termoactive clothes", count: 1},{name: "backpack", count: 1});
+           this.items.push({name: "Mountain shoes", count: 1},{name: "Thermoactive clothes", count: 1},{name: "Backpack", count: 1});
        }
       //plaza
       if(this.beach == true){
-        this.items.push({name: "swimsuit", count: 1},{name: "sunglasses", count: 1},{name: "cream with filter", count: 1});
+        this.items.push({name: "Swimsuit", count: 1},{name: "Sunglasses", count: 1},{name: "Cream with filter", count: 1});
      }
      //temperatura
      axios
         .get('https://api.openweathermap.org/data/2.5/weather',{
           params: {
-            id: this.city.id, //2643743
-            appid: '19d1c1955abe7831267d6cccbf9735f1' //tu juz jest nasz api id
+            id: this.city.id, 
+            appid: '19d1c1955abe7831267d6cccbf9735f1' //tu juz jest nasz api key id
           }
         })
         .then((response) => {this.ap = response.data; 
                             this.temp = response.data.main.temp;
                             if(response.data.weather[0].main == "Rain"){
-                              this.items.push({name: "parasol/płaszcz przeciwdeszczowy", count: 1}); }
+                              this.items.push({name: "Umbrella / raincoat", count: 1}); }
                            })
-
+      //dodanie itemow w zalemosci od pogody
       if((this.temp - 273.15 ) < 20){
-        this.items.push({name: "Bluza/sweter", count: this.diff},{name: "Kurtka", count: 1})
+        this.items.push({name: "Sweatshirt / sweater", count: this.diff},{name: "Jacket", count: 1})
       }
       if ((this.temp - 273.15 ) < 5){
-        this.items.push({name: "czapka", count: 1},{name: "rękawiczki", count: 1},{name: "szalik", count: 1})
+        this.items.push({name: "Hat", count: 1},{name: "Gloves", count: 1},{name: "Scarf", count: 1})
       }
 
       var user = JSON.parse(localStorage.getItem('user'));
@@ -165,6 +159,7 @@ export default {
           }).then(
               response => {
                   this.content = response.data;
+                  this.$router.push('/BoardUser');
               },
               error => {
                   this.content =
@@ -187,8 +182,9 @@ export default {
 
 
   .card-container.card {
-    max-width: 400px !important;
+    max-width: 500px !important;
     padding: 25px 25px;
+    align-content: center;
   }
 
   .card {

@@ -10,6 +10,11 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import GSignInButton from 'vue-google-signin-button'
 import {
+  faMountain,
+  faUmbrellaBeach,
+  faCalendarAlt,
+  faCity,
+  faAtlas,
   faHome,
   faUser,
   faUserPlus,
@@ -17,7 +22,7 @@ import {
   faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHome, faUser, faUserPlus, faSignInAlt, faSignOutAlt);
+library.add(faHome, faUser, faMountain, faUmbrellaBeach, faUserPlus, faCalendarAlt, faCity, faSignInAlt, faSignOutAlt,faAtlas);
 
 Vue.config.productionTip = false;
 
