@@ -25,9 +25,11 @@
                     <li>
                         data do: {{ content.dateTo }}
                     </li>
-                    <li>
-                        przedmioty: {{ content.items }}
-                    </li>
+                     <ul>
+            <li v-for="item in content.items" :key="item.id">
+                nazwa przedmiotu: {{item.name}}, ilosc przedmiotow: {{item.count}}
+            </li>
+        </ul>
                 </ul>
 
 

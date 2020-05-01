@@ -58,7 +58,7 @@ export const router = new Router({
       component: Google
     },
     {
-      path: '/Note/:noteid',
+      path: '/Note/:exampleProp',
       name: 'note',
       component: Note,
       props: true
