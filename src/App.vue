@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav class="navbar navbar-expand navbar-light" style="background-color: #666699;" >
       <a href class="navbar-brand" @click.prevent>PackIT</a>
+      <div class="collapse navbar-collapse d-flex justify-content-start" id="navbarNav">
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
           <router-link to="/list" class="nav-link">
-            Add List
+            <font-awesome-icon icon="plus"/>
           </router-link>
         </li>
         <li class="nav-item">
           <router-link to="/BoardUser" class="nav-link">
-            <font-awesome-icon />All notes
+            <font-awesome-icon icon="home"/>
           </router-link>
         </li>
         <li class="nav-item">
@@ -30,7 +31,9 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/google" class="nav-link">Google</router-link>
+          <router-link to="/google" class="nav-link">
+            <font-awesome-icon :icon="['fab', 'google']" />
+            </router-link>
         </li>
       </div>
 
@@ -46,6 +49,7 @@
             <font-awesome-icon icon="sign-out-alt" />LogOut
           </a>
         </li>
+        </div>
       </div>
     </nav>
 

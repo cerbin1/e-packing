@@ -184,6 +184,4 @@ export default {
     max-width: 500px !important;
     padding: 25px 25px;
   }
-
-
 </style>
