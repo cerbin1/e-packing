@@ -2,44 +2,60 @@
     <div class="container">
         <header class="jumbotron">
             <h3>
-
-                <strong>{{exampleProp}}</strong> this my note id
-
-                notatka o id: {{exampleProp}}
-                <ul id="example-1">
-                    <li>
-                        nazwa notatki: {{ content.name }}
-                    </li>
-                    <li>
-                        kraj: {{ content.country }}
-                    </li>
-                    <li>
-                        miasto: {{ content.city }}
-                    </li>
-                    <li>
-                        komentarz: {{ content.comment }}
-                    </li>
-                    <li>
-                        data od: {{ content.dateFrom }}
-                    </li>
-                    <li>
-                        data do: {{ content.dateTo }}
-                    </li>
-                    <li>
-                        przedmioty: {{ content.items }}
-                    </li>
-                </ul>
+Moja podróż do <strong>{{content.name}}</strong>
+               
+                    <table class="table table-striped">
+                         
+  <thead>
+    <tr>
+     
+      <th>Kraj</th>
+       <th>Miasto</th>
+       <th>Od:</th>
+       <th>Do:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>       
+       <td>{{content.country}}</td> 
+       <td>{{content.city}}</td>   
+       <td>{{content.dateFrom}}</td>  
+       <td>{{content.dateTo}}</td>  
+    </tr>
+   </tbody>
+</table>
+               
+                         <div>
+                         Komentarze:<div class="container p-3 my-3 border bg-white text-black">{{content.comment}}</div>
+                         <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Potrzebne przedmioty:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr v-for="item in content.items" :key="item.id">
+       <th scope="row">{{ item.name  }}</th>  
+       <td>{{  item.count }}</td> 
+       <td>{{  item.dateFrom }}</td>  
+       <td>{{  item.dateTo }}</td>  
+    </tr>
+   </tbody>
+</table>
+</div>
+       
 
             </h3>
             <router-link :to="{ name: 'user'}">Pokaż wszystkkie</router-link>
 
-        </header>
-
-        <label>
-            Komentarz do notatki
-            <input v-model="commentValue" type="text">
-        </label>
-        <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary">zapisz komentarz</button>
+        </header>     
+            
+            <div class="form-group">
+  <label for="comment">Komentarz do notatki:</label>
+  <textarea v-model="commentValue" class="form-control" rows="5" id="comment"></textarea>
+</div>
+      
+        <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">zapisz komentarz</button>
     </div>
 </template>
 
