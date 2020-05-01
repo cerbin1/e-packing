@@ -67,19 +67,6 @@
             </div>
             <button type="submit" @click.stop.prevent="HandleListCreation()" class="btn btn-primary">Create note</button>
         </form>
-        <div>
-          <span>Ap: {{ temp }}</span>
-          <span>Ap: {{ rain }}</span>
-          <span>Ap: {{ ap }}</span>
-          <span>Title: {{name}}</span><br/>
-          <span>Dfrom: {{dfrom}}</span><br/>
-          <span>Dto: {{dto}}</span><br/>
-          <span>Days: {{diff}}</span><br/>
-          <span>List: {{ items }}</span>
-          <span>City: {{ city.city_name }}</span>
-          <span>City_id: {{ city.id }}</span>
-          
-        </div>
         <div
             v-if="message"
             class="alert"
@@ -95,7 +82,6 @@
 import axios from 'axios';
 import authHeader from "@/services/auth-header";
 import json from '@/json/citylist.json';
-//import w from '@/json/onecity.json';
 
 export default {
   name: 'List',
@@ -103,7 +89,6 @@ export default {
     return {
       Cities: json,
       city_id: 0,
-      info: null,
       ap: null,
       name: '',
       city: '',
@@ -113,7 +98,6 @@ export default {
       temp: 0,
       beach: false,
       mountain: false,
-      rain: true,
       message: '',
       diff: 0,
       comment: '',
@@ -146,21 +130,19 @@ export default {
             appid: '19d1c1955abe7831267d6cccbf9735f1' //tu juz jest nasz api id
           }
         })
-        .then((response) => {this.ap = response.data; this.temp = response.data.main.temp
+        .then((response) => {this.ap = response.data; 
+                            this.temp = response.data.main.temp;
+                            if(response.data.weather[0].main == "Rain"){
+                              this.items.push({name: "parasol/płaszcz przeciwdeszczowy", count: 1}); }
                            })
 
-     // this.temp = this.ap.main.temp; 
-     // this.rain = Object.prototype.hasOwnProperty.call(response, response.data.info.rain)
       if((this.temp - 273.15 ) < 20){
         this.items.push({name: "Bluza/sweter", count: this.diff},{name: "Kurtka", count: 1})
       }
       if ((this.temp - 273.15 ) < 5){
         this.items.push({name: "czapka", count: 1},{name: "rękawiczki", count: 1},{name: "szalik", count: 1})
       }
-      /*
-      if(Object.prototype.hasOwnProperty.call(this.info, this.info.rain)){
-        this.items.push({name: "parasol/płaszcz przeciwdeszczowy", count: 1})
-      }*/
+
       var user = JSON.parse(localStorage.getItem('user'));
       console.log(localStorage.getItem('user'));
       this.message = '';
