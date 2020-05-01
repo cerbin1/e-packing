@@ -4,13 +4,13 @@
         <form name="form">
               <div class="form-group">
                     <label for="name" style="font-size:24px"><font-awesome-icon icon="atlas" style="font-size:24px"/> Title</label>
-                    <input
-                        v-model="name"
-                        v-validate="'required|min:4|max:25'"
-                        type="text"
-                        class="form-control"
-                        name="name"
-                    />
+                      <input
+                          v-model="name"
+                          v-validate="'required|min:4|max:25'"
+                          type="text"
+                          class="form-control"
+                          name="name"
+                      />
                      <div
                         v-if="submitted && errors.has('title')"
                         class="alert-danger"
@@ -19,13 +19,13 @@
                 </div>
                 <div class="form-group">
                     <label for="city" style="font-size:20px"><font-awesome-icon icon="city" style="font-size:20px"/> City</label><br />
-                    <select v-model="city">
-                      <option disabled value="">Please select City</option>
-                      <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name, country: c.country}">{{ c.name }}</option>
-                    </select>  
+                      <select v-model="city">
+                        <option disabled value="">Please select City</option>
+                        <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name, country: c.country}">{{ c.name }}</option>
+                      </select>  
                 </div>
                 <div class="form-group">
-                        <label for="dfrom" style="font-size:20px"><font-awesome-icon icon="calendar-alt" style="font-size:20px"/> Start date</label><br />
+                    <label for="dfrom" style="font-size:20px"><font-awesome-icon icon="calendar-alt" style="font-size:20px"/> Start date</label><br />
                         <input 
                           type="date" 
                           v-model="dfrom" 
@@ -37,14 +37,14 @@
                 </div>
                 <div class="form-group">
                   <label for="dto" style="font-size:20px"><font-awesome-icon icon="calendar-alt" style="font-size:20px"/> End date </label><br />
-                  <input 
-                    type="date" 
-                    v-model="dto" 
-                    id = "end"
-                    v-validate="'required'"
-                    value="2020-01-22"
-                    min="2020-04-01" 
-                    max="2020-06-31">
+                    <input 
+                      type="date" 
+                      v-model="dto" 
+                      id = "end"
+                      v-validate="'required'"
+                      value="2020-01-22"
+                      min="2020-04-01" 
+                      max="2020-06-31">
                 </div>
 
                 <div class="form-group">
