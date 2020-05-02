@@ -125,7 +125,7 @@ export default {
           this.$store.dispatch('auth/login', this.user).then(
           
             () => {
-              this.$router.push('/profile');
+              this.$router.push('/boarduser');
             },
             error => {
               this.loading = false;
