@@ -21,7 +21,7 @@
             onSignInSuccess(googleUserInfo) {
                 const profile = googleUserInfo.getBasicProfile();
                 console.log(profile);
-                let googleUserEmail = profile.yu;
+                let googleUserEmail = profile.zu;
                 const googleUser = {email: googleUserEmail};
 
                 this.$store.dispatch('auth/google', googleUser).then(
