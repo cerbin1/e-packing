@@ -11,6 +11,7 @@
                           type="text"
                           class="form-control"
                           name="name"
+                          id="name"
                       />
                      <div
                         v-if="submitted && errors.has('title')"
@@ -20,15 +21,15 @@
                 </div>
                 <div class="form-group">
                     <label for="city" style="font-size:20px"><font-awesome-icon icon="city" style="font-size:20px"/> City</label><br />
-                      <select v-model="city">
+                      <select v-model="city" id="city">
                         <option disabled value="">Please select City</option>
                         <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name, country: c.country}">{{ c.name }}</option>
                       </select>  
                 </div>
                 <div class="form-group">
-                    <label for="dfrom" style="font-size:20px"><font-awesome-icon icon="calendar-alt" style="font-size:20px"/> Start date</label><br />
-                        <input 
-                          type="date" 
+                    <label for="start" style="font-size:20px"><font-awesome-icon icon="calendar-alt" style="font-size:20px"/> Start date</label><br />
+                        <input
+                          type="date"
                           v-model="dfrom" 
                           v-validate="'required'"
                           id="start" 
@@ -37,7 +38,7 @@
                           max="2020-06-31">
                 </div>
                 <div class="form-group">
-                  <label for="dto" style="font-size:20px"><font-awesome-icon icon="calendar-alt" style="font-size:20px"/> End date </label><br />
+                  <label for="end" style="font-size:20px"><font-awesome-icon icon="calendar-alt" style="font-size:20px"/> End date </label><br />
                     <input 
                       type="date" 
                       v-model="dto" 
@@ -50,13 +51,15 @@
 
                 <div class="form-group">
                     <label for="mountains" style="font-size:18px"><font-awesome-icon icon="mountain" style="font-size:18px"/> Mountain trip&nbsp;</label>
-                    <input 
+                    <input
+                            id="mountains"
                         type="checkbox" 
                         v-model="mountain">
                 </div>
                 <div class="form-group">
                     <label for="beach" style="font-size:18px"><font-awesome-icon icon="umbrella-beach" style="font-size:18px"/> Beach&nbsp;</label>
-                    <input 
+                    <input
+                            id="beach"
                         type="checkbox" 
                         v-model="beach">
                 </div>

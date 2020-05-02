@@ -15,7 +15,7 @@
        <router-link 
           :to="{ name: 'note', 
            params: { exampleProp: item.id }}">
-              Pokaż szczegóły
+              Show details
        </router-link>
     </tr>
    </tbody>
