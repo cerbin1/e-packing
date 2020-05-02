@@ -1,16 +1,21 @@
 <template>
  <div id="app">
+ <h2>My notes</h2>
   <table class="table table-striped">
   <thead>
     <tr>
-      <th>My notes:</th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Date from</th>
+      <th>Date to</th>
+      <th>Details</th>
     </tr>
   </thead>
   <tbody>
     <tr v-for="(item) in content" :key="item">
-       <th scope="row">{{ item.name  }}</th>  
-       <td>{{  item.country }}</td> 
-       <td>{{  item.dateFrom }}</td>  
+       <th scope="row">{{ item.name  }}</th>
+       <td>{{  item.country }}</td>
+       <td>{{  item.dateFrom }}</td>
        <td>{{  item.dateTo }}</td>
         <td>
             <router-link
