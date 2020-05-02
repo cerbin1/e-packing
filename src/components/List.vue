@@ -1,7 +1,8 @@
 <template>
   <div class="col-md-12">
-    <div class="card card-container">
-        <form name="form">
+    <img alt="Vue logo" src="./b.jpg" class="rounded mx-auto d-block">
+    <div class="card card-container" style="background-color: lightblue; align-content: center;"> 
+        <form name="form" style ="align-content: center;">
               <div class="form-group">
                     <label for="name" style="font-size:24px"><font-awesome-icon icon="atlas" style="font-size:24px"/> Title</label>
                       <input
@@ -184,4 +185,11 @@ export default {
     max-width: 500px !important;
     padding: 25px 25px;
   }
+
+  .card {
+        margin: 0 auto; 
+        float: none; 
+        margin-bottom: 10px;
+}
+
 </style>
