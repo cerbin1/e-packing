@@ -58,10 +58,15 @@ My trip <strong>{{content.name}}</strong>
       
         <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">Save comment</button>
         <div
-            v-if="saveComment"
-            class="alert alert-primary"
+            v-if="success"
+            class="alert alert-success"
             role="alert"
           >Comment added</div>
+        <div
+                v-if="fail"
+                class="alert alert-danger"
+                role="alert"
+        >Error while adding comment</div>
     </div>
 </template>
 <style scoped>
@@ -106,7 +111,9 @@ My trip <strong>{{content.name}}</strong>
         data() {
             return {
                 content: '',
-                commentValue: ''
+                commentValue: '',
+                success: false,
+                fail: false
             };
         },
         mounted() {
@@ -131,12 +138,13 @@ My trip <strong>{{content.name}}</strong>
                 saveComment() {
                     UserService.updateComment(this.content.id, this.commentValue).then(
                         () => {
-                            alert("pomyslnie zapisano komentarz");
+                            this.success = true;
                             this.content.comment = this.commentValue;
                             this.commentValue = ''
                         },
                         error => {
-                            alert("Error przy ddoaniu komentarza: " + error)
+                            console.log(error);
+                    this.fail = true;
                         }
                     );
                 },
