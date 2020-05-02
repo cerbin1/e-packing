@@ -149,7 +149,7 @@ My trip <strong>{{content.name}}</strong>
                     let itemsToCopy = '';
                     this.content.items.forEach(item => itemsToCopy += item.name + ' ' + item.count + '\n');
                     navigator.clipboard.writeText(itemsToCopy.toString()).then(function () {
-                        alert("Gotowe do wklejenia do Google Kepp");
+                        alert("List of items is ready to copy to Google Keep");
                     }, function () {
                         alert("Could not copy");
                     });
