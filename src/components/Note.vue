@@ -2,17 +2,17 @@
     <div class="container">
         <header class="jumbotron">
             <h3>
-Moja podróż do <strong>{{content.name}}</strong>
+My trip <strong>{{content.name}}</strong>
                
                     <table class="table table-striped">
                          
   <thead>
     <tr>
      
-      <th>Kraj</th>
-       <th>Miasto</th>
-       <th>Od:</th>
-       <th>Do:</th>
+      <th>Country</th>
+       <th>City</th>
+       <th>From</th>
+       <th>To</th>
     </tr>
   </thead>
   <tbody>
@@ -26,11 +26,11 @@ Moja podróż do <strong>{{content.name}}</strong>
 </table>
                
                          <div>
-                         Komentarze:<div class="container p-3 my-3 border bg-white text-black">{{content.comment}}</div>
+                         Comment:<div class="container p-3 my-3 border bg-white text-black">{{content.comment}}</div>
                          <table class="table table-striped">
   <thead>
     <tr>
-      <th>Potrzebne przedmioty:</th>
+      <th>List of needed items:</th>
     </tr>
   </thead>
   <tbody>
@@ -46,16 +46,17 @@ Moja podróż do <strong>{{content.name}}</strong>
        
 
             </h3>
-            <router-link :to="{ name: 'user'}">Pokaż wszystkkie</router-link>
+            <router-link :to="{ name: 'user'}">Show all notes</router-link>
 
-        </header>     
-            
+        </header>
+        <button type="submit" @click.stop.prevent="copyToGoogleKeep()" class="btn btn-primary btn-block">Copy for Google Kepp</button>
+
             <div class="form-group">
-  <label for="comment">Komentarz do notatki:</label>
+  <label for="comment">Comment:</label>
   <textarea v-model="commentValue" class="form-control" rows="5" id="comment"></textarea>
 </div>
       
-        <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">zapisz komentarz</button>
+        <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">save comment</button>
     </div>
 </template>
 
@@ -113,6 +114,15 @@ Moja podróż do <strong>{{content.name}}</strong>
                             alert("Error przy ddoaniu komentarza: " + error)
                         }
                     );
+                },
+                copyToGoogleKeep() {
+                    let itemsToCopy = '';
+                    this.content.items.forEach(item => itemsToCopy += item.name + ' ' + item.count + '\n');
+                    navigator.clipboard.writeText(itemsToCopy.toString()).then(function () {
+                        alert("Gotowe do wklejenia do Google Kepp");
+                    }, function () {
+                        alert("Could not copy");
+                    });
                 }
             }
     };

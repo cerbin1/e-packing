@@ -14,9 +14,6 @@
             <font-awesome-icon icon="home"/>
           </router-link>
         </li>
-        <li class="nav-item">
-          <router-link v-if="currentUser" to="/exampleUserNotes" class="nav-link">Example user notes</router-link>
-        </li>
       </div>
 
       <div v-if="!currentUser" class="navbar-nav ml-auto">
