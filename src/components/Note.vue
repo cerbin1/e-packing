@@ -1,7 +1,6 @@
 <template>
-    <div class="container responsive">
+    <div class="col-md-12">
         <header class="jumbotron">
-            <h3>
 My trip <strong>{{content.name}}</strong>
                
                     <table class="table table-striped">
@@ -44,8 +43,6 @@ My trip <strong>{{content.name}}</strong>
 </table>
 </div>
        
-
-            </h3>
             <router-link :to="{ name: 'user'}">Show all notes</router-link>
 
         </header>
