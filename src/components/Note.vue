@@ -57,6 +57,11 @@ My trip <strong>{{content.name}}</strong>
 </div>
       
         <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">Save comment</button>
+        <div
+            v-if="saveComment"
+            class="alert alert-primary"
+            role="alert"
+          >Comment added</div>
     </div>
 </template>
 <style scoped>

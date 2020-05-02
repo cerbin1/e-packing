@@ -63,7 +63,11 @@
                         type="checkbox" 
                         v-model="beach">
                 </div>
-            <button type="submit" @click.stop.prevent="HandleListCreation()" class="btn btn-primary">Create note</button>
+                <button class="btn btn-primary btn-block" type="submit" @click.stop.prevent="HandleListCreation()">
+            <span v-show="loading" class="spinner-border spinner-border-sm"></span>
+            <span>Create note</span>
+          </button>
+            
         </form>
         <div
             v-if="message"
