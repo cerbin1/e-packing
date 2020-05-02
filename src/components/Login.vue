@@ -46,10 +46,10 @@
             <span>Login</span>
           </button>
         </div> 
-          <div v-if="message" class="alert alert-danger" role="alert">{{message}}</div>
+          <div v-if="message" class="alert alert-danger text-center" role="alert">{{message}}</div>
           </mdb-card-body>
-          <mdb-modal-footer class="mx-5 pt-3 mb-1">
-          <h12 class="dark-grey-text mb-5">Make packing easy</h12>
+          <mdb-modal-footer class="mx-5 pt-3 mb-1 text-left">
+              <h5 class="dark-grey-text mb-5 text-center">Make packing easy</h5>
           </mdb-modal-footer>
         </mdb-card>
       </mdb-col>
