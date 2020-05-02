@@ -3,7 +3,7 @@
   <table class="table table-striped">
   <thead>
     <tr>
-      <th>Moje notatki:</th>
+      <th>My notes:</th>
     </tr>
   </thead>
   <tbody>
@@ -11,12 +11,14 @@
        <th scope="row">{{ item.name  }}</th>  
        <td>{{  item.country }}</td> 
        <td>{{  item.dateFrom }}</td>  
-       <td>{{  item.dateTo }}</td>  
-       <router-link 
-          :to="{ name: 'note', 
+       <td>{{  item.dateTo }}</td>
+        <td>
+            <router-link
+                    :to="{ name: 'note',
            params: { exampleProp: item.id }}">
-              Show details
-       </router-link>
+                Show details
+            </router-link>
+        </td>
     </tr>
    </tbody>
 </table>

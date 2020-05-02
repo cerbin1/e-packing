@@ -56,7 +56,7 @@ My trip <strong>{{content.name}}</strong>
   <textarea v-model="commentValue" class="form-control" rows="5" id="comment"></textarea>
 </div>
       
-        <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">save comment</button>
+        <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">Save comment</button>
     </div>
 </template>
 
