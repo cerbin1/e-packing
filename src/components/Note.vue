@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container responsive">
         <header class="jumbotron">
             <h3>
 My trip <strong>{{content.name}}</strong>
@@ -59,6 +59,26 @@ My trip <strong>{{content.name}}</strong>
         <button type="submit" @click.stop.prevent="saveComment()" class="btn btn-primary btn-block">Save comment</button>
     </div>
 </template>
+<style scoped>
+/*.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}*/
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+</style>
 
 <script>
     import UserService from "@/services/user.service";
