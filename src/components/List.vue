@@ -14,14 +14,14 @@
                           id="name"
                       />
                      <div
-                        v-if="submitted && errors.has('title')"
+                        v-if="submitted && errors.has('name')"
                         class="alert-danger"
-                     >{{errors.first('title')}}
+                     >{{errors.first('name')}}
                      </div>
                 </div>
                 <div class="form-group">
                     <label for="city" style="font-size:20px"><font-awesome-icon icon="city" style="font-size:20px"/> City</label><br />
-                      <select v-model="city" id="city">
+                      <select v-model="city" id="city" required>
                         <option disabled value="">Please select City</option>
                         <option v-for='c in Cities' v-validate="'required'" :key="c.id" v-bind:value="{ id: c.id, city_name: c.name, country: c.country}">{{ c.name }}</option>
                       </select>  
@@ -32,7 +32,7 @@
                           type="date"
                           v-model="dfrom" 
                           v-validate="'required'"
-                          id="start" 
+                          id="start"
                           value="2020-01-22"
                           min="2020-04-01" 
                           max="2020-06-31">
@@ -146,7 +146,7 @@ export default {
       this.message = '';
       this.submitted = true;
       this.$validator.validate().then(isValid => {
-       if (isValid) {
+       if (isValid && this.city.id) {
           axios({
               method: 'post',
               url: 'http://localhost:8081/notes/createUserNote?userId=' + user.id,
