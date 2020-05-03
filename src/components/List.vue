@@ -153,7 +153,7 @@ export default {
        if (isValid && this.city.id) {
           axios({
               method: 'post',
-              url: 'http://localhost:8081/notes/createUserNote?userId=' + user.id,
+              url: 'https://epackingbackend.herokuapp.com/notes/createUserNote?userId=' + user.id,
               headers: authHeader(),
               data: {
                   name: this.name,
